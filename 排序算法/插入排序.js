@@ -1,7 +1,7 @@
 /**
  * 
  * 时间复杂度：O(n^2)
- * 空间复杂度：
+ * 空间复杂度：O(1)
  * 
  * 思路：
  *  1. 从第一个元素开始，该元素可以被认为被排序
@@ -22,6 +22,22 @@ var insertionSort = function (array) {
             j--
         }
         array[j] = temp
+    }
+    return array
+}
+
+var insertSort = function (array) {
+    var len = array.length
+    for (let i = 1; i < len; i++) {
+        let target = i
+        for (let j = i - 1; j >= 0; j--) {
+            if (array[target] < array[j]) {
+                [array[target], array[j]] = [array[j], array[target]]
+                target = j
+            } else {
+                break
+            }            
+        }
     }
     return array
 }
